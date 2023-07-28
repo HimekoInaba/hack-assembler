@@ -62,5 +62,4 @@ public class HackAssemblerParser {
             throw new IllegalArgumentException("File " + file.getAbsolutePath() + " is not an *.asm file");
         }
     }
-
 }
