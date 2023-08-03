@@ -12,7 +12,7 @@ public class ACommand extends Command {
 
     @Override
     public String toBinary() {
-        final var address = this.command.substring(1, this.command.length() - 1);
+        final var address = this.command.substring(1);
         if (isNumber(address)) {
             return String.format(
                     "%16s",
@@ -20,6 +20,15 @@ public class ACommand extends Command {
             );
         }
         return "invalid";
+    }
+
+    public boolean isSymbol() {
+        final var address = this.command.substring(1);
+        return !isNumber(address);
+    }
+
+    public String getSymbol() {
+        return this.command.substring(1);
     }
 
     private boolean isNumber(String str) {

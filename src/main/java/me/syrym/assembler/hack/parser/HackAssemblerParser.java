@@ -42,7 +42,20 @@ public class HackAssemblerParser {
             return getAt(currentLine);
         }
 
-        return line;
+        final var stripped = line.strip();
+        if (stripped.contains("//")) {
+            final var cleaned = stripped.substring(0, stripped.indexOf("//")).strip();
+            return cleaned.isEmpty() ? getAt(currentLine) : cleaned;
+        }
+        return stripped;
+    }
+
+    public void reset() {
+        this.currentLine = 0;
+    }
+
+    public int getCurrentLine() {
+        return this.currentLine;
     }
 
     private void validatePath(String path) {
